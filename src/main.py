@@ -16,7 +16,7 @@ moved_coin = None
 
 def prettyprint(array):
     result = ""
-    for move in traversal:
+    for move in array:
         result += ", ("+str(move[0])+" - "+str(move[2])+")"
     return result[2:]
 
