@@ -5,7 +5,7 @@ class Node:
         self.on = True
 
     def __str__(self):
-        # result = "("+self.number.__str__() + ", "
+       # result = "("+self.number.__str__() + ", "
         result = ""
         if self.on:
             result += "1"

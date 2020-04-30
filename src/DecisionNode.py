@@ -11,6 +11,7 @@ class DecisionNode:
         self.children = []
         self.move_option = move_option
         self.t = triangle
+        self.finished_node = False
 
         # DecisionNode is not a pedophile
         self.explored_children = []
@@ -52,6 +53,13 @@ class DecisionNode:
             if indent <= MAX_SHOWN_DEPTH:
                 print(('|'+'\t') * (indent) + "Ran out of moves. Marked my last move, "+ str(self.move_option)+" explored")
             self.parent.explored_children.append(self)
+            on_nodes = 0
+            for node in t.board:
+                if node.is_on():
+                    on_nodes += 1
+            if on_nodes == 1:
+                self.finished_node = True
+                print(('|'+'\t') * (indent) + str("This node is completed"))
         else:
             for i in children_moves:
                 self.children.append(DecisionNode(move_option=i, parent=self, triangle=self.t))
