@@ -13,6 +13,9 @@ class DecisionNode:
         self.t = triangle
         self.finished_node = False
 
+        # list of moves to reach a finished node from this node
+        self.finished_traversals = []
+
         # DecisionNode is not a pedophile
         self.explored_children = []
 
@@ -60,6 +63,7 @@ class DecisionNode:
             if on_nodes == 1:
                 self.finished_node = True
                 print(('|'+'\t') * (indent) + str("This node is completed"))
+                self.inform_ancestors()
         else:
             for i in children_moves:
                 self.children.append(DecisionNode(move_option=i, parent=self, triangle=self.t))
@@ -97,3 +101,17 @@ class DecisionNode:
         for move in move_list:
             new_t.move(move)
         return new_t
+
+    def inform_ancestors(self, path=None):
+        if path is None:
+            path = []
+        if self.parent is not None:
+            path.append(self.move_option[0:])
+            self.finished_traversals.append(path)
+            self.parent.inform_ancestors(path)
+        else:
+            self.finished_traversals.append(path)
+
+    def get_finished_traversals(self):
+        result = self.finished_traversals
+        return result
