@@ -106,7 +106,7 @@ class DecisionNode:
         if path is None:
             path = []
         if self.parent is not None:
-            path.append(self.move_option[0:])
+            path.append(self.move_option)
             self.finished_traversals.append(path)
             self.parent.inform_ancestors(path)
         else:
