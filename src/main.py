@@ -1,5 +1,5 @@
-from src.Triangle import *
-from src.DecisionNode import *
+from Triangle import *
+from DecisionNode import *
 
 
 # neither 1 nor 5 had any answers
