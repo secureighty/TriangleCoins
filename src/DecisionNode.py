@@ -1,4 +1,4 @@
-from src.Triangle import *
+from Triangle import *
 
 
 class DecisionNode:
