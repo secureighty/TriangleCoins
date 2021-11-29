@@ -1,4 +1,4 @@
-from src.Node import *
+from Node import *
 
 
 class Triangle:
